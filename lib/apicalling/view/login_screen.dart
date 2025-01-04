@@ -92,7 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   'email': _email.text.toString().trim(),
                   'password': _pass.text.toString().trim()
                 };
-                authViewModel.login(data);
+                authViewModel.login(data, context);
                 Utils.snackBar("Hit button", context);
               }
             })
