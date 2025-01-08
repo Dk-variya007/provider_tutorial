@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:provider_tutorial/apicalling/view_model/auth_view_model.dart';
-import 'package:provider_tutorial/apicalling/resources/component/custom_round_button.dart';
-import 'package:provider_tutorial/apicalling/utils/routes/route_name.dart';
-import 'package:provider_tutorial/apicalling/view/sign_up_screen.dart';
+
+import '../view_model/auth_view_model.dart';
+import '../resources/component/custom_round_button.dart';
 import '../utils/utils.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _email = TextEditingController();
 
   final TextEditingController _pass = TextEditingController();
@@ -81,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 )),
         SizedBox(height: 20),
         CustomRoundButton(
-            title: 'Login',
+            title: 'Sign up',
             loading: authViewModel.loading,
             onPressed: () {
               if (_email.text.isEmpty || _email.text == null) {
@@ -95,21 +94,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   'email': _email.text.toString().trim(),
                   'password': _pass.text.toString().trim()
                 };
-                authViewModel.login(data, context);
-                Utils.snackBar("Hit button", context);
+                authViewModel.signUp(data, context);
               }
             }),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Text("Don't have an account?"),
-            TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, RouteName.signUp);
-                },
-                child: Text("Sign Up"))
-          ],
-        )
       ],
     )));
   }

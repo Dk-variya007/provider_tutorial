@@ -17,12 +17,13 @@ class CustomRoundButton extends StatelessWidget {
     return InkWell(
         onTap: onPressed,
         child: Container(
-          height: 70,
+          height: 50,
           width: 140,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
               color: AppColors.blueColor),
-          child: Center(child: Text(title)),
+          child: Center(
+              child: loading ? CircularProgressIndicator() : Text(title)),
         ));
   }
 }

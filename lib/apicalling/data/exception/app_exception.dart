@@ -10,6 +10,15 @@ class AppException implements Exception {
   }
 }
 
+class ServerException implements Exception {
+  final String message;
+
+  ServerException([this.message = 'Server is currently unavailable']);
+
+  @override
+  String toString() => 'ServerException: $message';
+}
+
 class FetchDataException extends AppException {
   FetchDataException({String? message})
       : super(message: 'Error During Communication');
